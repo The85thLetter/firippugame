@@ -16,11 +16,15 @@
 #rune {
     transition: .5s ease-in-out;
     position:absolute;
-    z-index:1;
+    z-index:2;
 }
-#char {
+.char {
     position:absolute;
     z-index:1;    
+}
+
+.preload{
+    visibility:hidden;
 }
 
 .mapTile1 {
@@ -43,17 +47,17 @@
     background: url("https://i.imgur.com/A0HZXBr.png");
 }
 .mapTileFloor {
-    background: url("/firippu textures/tiles/s/f.png");
+    background: url("./firippu textures/tiles/s/f.png");
 }
 .mapTileWall {
-    background: url("/firippu textures/tiles/s/wall.png");
+    background: url("./firippu textures/tiles/s/wall.png");
 }
 .mapTileWallBack {
-    background: url("/firippu textures/tiles/s/backwall.png");
+    background: url("./firippu textures/tiles/s/backwall.png");
 }
 .mapTileWindow {
-    background: url("/firippu textures/tiles/s/window.png");
+    background: url("./firippu textures/tiles/s/window.png");
 }
 .mapTileSky {
-    background: url("/firippu textures/tiles/s/sky.png");
+    background: url("./firippu textures/tiles/s/sky.png");
 }

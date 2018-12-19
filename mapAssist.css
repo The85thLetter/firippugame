@@ -1,0 +1,63 @@
+/** {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    border: 0;*/
+/*    outline: 0;*/
+/*    font-size: 100%;*/
+/*    vertical-align: baseline;*/
+/*    background: transparent;*/
+/*}*/
+/*#disScreen {*/
+/*    background: black;*/
+/*    overflow: hidden;*/
+/*    position:absolute;*/
+/*}*/
+
+/*#rune {*/
+/*    transition: .5s ease-in-out;*/
+/*    position:absolute;*/
+/*    z-index:1;*/
+/*}*/
+/*.char {*/
+/*    position:absolute;*/
+/*    z-index:1;    */
+/*}*/
+
+/*.preload{*/
+/*    visibility:hidden;*/
+/*}*/
+
+/*.mapTile1 {*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: 30px 30px;*/
+/*    width:30px;*/
+/*    height:30px;*/
+/*    position:absolute;*/
+/*    z-index:1;*/
+/*}*/
+/*.mapTile2 {*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: 30px 30px;*/
+/*    width:30px;*/
+/*    height:30px;*/
+/*    position:absolute;*/
+/*    z-index:2;*/
+/*}*/
+/*.mapTileWall {*/
+/*    background: url("https://i.imgur.com/A0HZXBr.png");*/
+/*}*/
+/*.mapTileFloor {*/
+/*    background: url("./firippu textures/tiles/s/f.png");*/
+/*}*/
+/*.mapTileWall {*/
+/*    background: url("./firippu textures/tiles/s/wall.png");*/
+/*}*/
+/*.mapTileWallBack {*/
+/*    background: url("./firippu textures/tiles/s/backwall.png");*/
+/*}*/
+/*.mapTileWindow {*/
+/*    background: url("./firippu textures/tiles/s/window.png");*/
+/*}*/
+/*.mapTileSky {*/
+/*    background: url("./firippu textures/tiles/s/sky.png");*/
+/*}*/
