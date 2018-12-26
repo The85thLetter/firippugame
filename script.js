@@ -8,6 +8,27 @@ var runeSize = {
     sizeTwo:0,
     sizeThree:0
 };
+var runeRotation = {
+    a:0,
+    b:0,
+    c:0,
+    d:0,
+    e:0,
+    f:0,
+    g:0,
+    h:0
+};
+var runeRotateCooldown = {
+    a:0,
+    b:0,
+    c:0,
+    d:0,
+    e:0,
+    f:0,
+    g:0,
+    h:0
+};
+var runeNumber = 1;
 var currentMap = [0,0];
 var maps = [
     //list of areas
@@ -23,7 +44,7 @@ var maps = [
             [
                 [ ".", "w", "b", "b", "b", "b", "b", "w", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", "w", "b", "b", "b", "b", "b", "w", "b", "b", "b", "b", "b", "w", ".", "." ],
-                [ ".", "w", "f", "f", "f", "f", "f", "w", "b", "b", "s", "b", "b", "w", ".", "." ],
+                [ ".", "w", "f", "f", "f", "f", "f", "w", "b", "b", "d", "b", "b", "w", ".", "." ],
                 [ ".", "w", "f", "f", "f", "f", "f", "w", "b", "b", "b", "b", "b", "w", ".", "." ],
                 [ ".", "w", "f", "f", "f", "f", "f", "w", "f", "f", "f", "f", "f", "w", ".", "." ],
                 [ ".", "w", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "w", ".", "." ],
@@ -84,7 +105,7 @@ var maps = [
                 [ ".", "x", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
                 [ ".", "x", "x", "x", "x", "x", "x", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "x", "x", "x", "x", ".", "x", "x", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", "x", "x", "x", "x", "a", "x", "x", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "a", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
@@ -92,22 +113,23 @@ var maps = [
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ]
             ],
-            {
-                a: ["room",1]
-            }
+            [
+                ["a","room",[1,3,2]],
+                ["b","text",1]
+            ]
         ],
         [
             [
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "w", "w", "w", "w", "w", "w", "w", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "w", "f", "f", "f", "f", "f", "w", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "w", "f", "f", "f", "f", "f", "w", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "w", "f", "f", "f", "f", "f", "w", ".", "." ],
+                [ ".", ".", "w", "f", "w", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", "w", "f", "w", ".", ".", "w", "b", "b", "b", "b", "b", "w", ".", "." ],
+                [ ".", ".", "w", "f", "w", ".", ".", "w", "b", "b", "b", "b", "b", "w", ".", "." ],
+                [ ".", ".", "w", "f", "w", "b", "b", "w", "b", "b", "b", "b", "b", "w", ".", "." ],
+                [ ".", ".", "w", "f", "w", "b", "b", "w", "f", "f", "f", "f", "f", "w", ".", "." ],
+                [ ".", ".", "w", "f", "w", "b", "b", "w", "f", "f", "f", "f", "f", "w", ".", "." ],
+                [ ".", ".", "w", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "w", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", "w", "f", "f", "f", "f", "f", "w", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", "w", "f", "f", "f", "f", "f", "w", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
@@ -118,7 +140,6 @@ var maps = [
             [
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "w", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
@@ -126,6 +147,7 @@ var maps = [
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "o", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
@@ -135,53 +157,53 @@ var maps = [
             ],
             [
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", "x", "x", "x", "x", "x", "x", "x", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", "x", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", "x", ".", ".", ".", ".", ".", "x", "x", "x", "x", "x", "x", "x", ".", "." ],
-                [ ".", "x", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", "x", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", "x", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", "x", "x", "x", "x", "x", "x", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "x", "x", "x", "x", ".", "x", "x", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", "a", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", "x", "f", "x", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", "x", "f", "x", ".", ".", "x", "b", "b", "b", "b", "b", "w", ".", "." ],
+                [ ".", ".", "x", "f", "x", ".", ".", "x", "b", "b", "b", "b", "b", "w", ".", "." ],
+                [ ".", ".", "x", "f", "x", "b", "b", "x", "x", "x", "x", "x", "x", "x", ".", "." ],
+                [ ".", ".", "x", "f", "x", "b", "b", "x", "f", "f", "f", "f", "f", "x", ".", "." ],
+                [ ".", ".", "x", "f", "x", "x", "x", "x", "f", "f", "f", "f", "f", "x", ".", "." ],
+                [ ".", ".", "x", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "x", ".", "." ],
+                [ ".", ".", "x", "x", "x", "x", "x", "x", "f", "f", "f", "f", "f", "x", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", "x", "f", "f", "f", "f", "f", "x", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", "x", "x", "x", "x", "x", "x", "x", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ]
-            ],
-            [
-                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", "x", "x", "x", "x", "x", "x", "x", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", "x", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", "x", ".", ".", ".", ".", ".", "x", "x", "x", "x", "x", "x", "x", ".", "." ],
-                [ ".", "x", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", "x", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", "x", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", "x", "x", "x", "x", "x", "x", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "x", ".", ".", ".", ".", ".", "x", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", "x", "x", "x", "x", "a", "x", "x", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
-                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
                 [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ]
             ],
             [
-                
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", "c", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "b", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ],
+                [ ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "." ]
+            ],
+            [
+                ["c","room",[-1,4,4]],
+                ["b","mode",1]
             ]
         ]
     ]
 ];
 var setMapCollision = [];
-var setMapInteration;
+var setMapInteraction;
 var setMapEventReader;
 
-var rotation = -1;
 var keys = {};
-var charcterSprites = [
+var characterSprites = [
     //Slimy
     [
         [
@@ -265,27 +287,105 @@ function refresh () {
     updateArea();
     updateCombat();
 }
-function tileClass(charcter) {
+function tileClass(character) {
     var type = "undefined";
-    if (charcter==="") {
+    if (character==="") {
     } else {
-        if (charcter===".") {
+        if (character===".") {
             type = "undefined";
         }
-        if (charcter==="f") {
-            type = "mapTileFloor";
-        }
-        if (charcter==="w") {
+        if (character==="w") {
             type = "mapTileWall";
         }
-        if (charcter==="b") {
+        if (character==="b") {
             type = "mapTileWallBack";
         }
-        if (charcter==="s") {
-            type = "mapTileSky";
+        if (character==="d") {
+            type = "mapTileSkyDay";
         }
-        if (charcter==="o") {
+        if (character==="n") {
+            type = "mapTileSkyNight";
+        }
+        if (character==="o") {
             type = "mapTileWindow";
+        }
+        if (character==="f") {
+            type = "mapTileWoodFloor1";
+        }
+        if (character==="g") {
+            type = "mapTileWoodFloor2";
+        }
+        if (character==="h") {
+            type = "mapTileWoodFloor3";
+        }
+        if (character==="j") {
+            type = "mapTileWoodFloor4";
+        }
+        if (character==="q") {
+            type = "mapTileFloorGrass1";
+        }
+        if (character==="e") {
+            type = "mapTileFloorGrass2";
+        }
+        if (character==="r") {
+            type = "mapTileFloorGrass3";
+        }
+        if (character==="t") {
+            type = "mapTileFloorGrass4";
+        }
+        if (character==="y") {
+            type = "mapTileFloorGrass5";
+        }
+        if (character==="u") {
+            type = "mapTileFloorGrass6";
+        }
+        if (character==="i") {
+            type = "mapTileFloorGrass7";
+        }
+        if (character==="p") {
+            type = "mapTilePathGrass1";
+        }
+        if (character==="[") {
+            type = "mapTilePathGrass2";
+        }
+        if (character==="]") {
+            type = "mapTilePathGrass3";
+        }
+        if (character==="a") {
+            type = "mapTilePathGrass4";
+        }
+        if (character==="k") {
+            type = "mapTilePathGrass5";
+        }
+        if (character==="l") {
+            type = "mapTilePathGrass6";
+        }
+        if (character===";") {
+            type = "mapTilePathGrass7";
+        }
+        if (character==="z") {
+            type = "mapTilePathGrass8";
+        }
+        if (character==="x") {
+            type = "mapTilePathGrass9";
+        }
+        if (character==="c") {
+            type = "mapTilePathGrass10";
+        }
+        if (character==="v") {
+            type = "mapTilePathGrass11";
+        }
+        if (character==="m") {
+            type = "mapTilePathGrass12";
+        }
+        if (character===",") {
+            type = "mapTilePathGrass13";
+        }
+        if (character==="?") {
+            type = "mapTilePathGrass14";
+        }
+        if (character==="/") {
+            type = "mapTilePathGrass15";
         }
     }
     return type;
@@ -321,7 +421,60 @@ function updateCombat () {
         runeSize.sizeTwo=windowW/6;
         runeSize.sizeThree=windowW/8;
     }
-    $("#rune").css("width",runeSize.sizeOne);
+    var currentRuneSize = runeSize.sizeOne;
+    //eight different displays, each with an increasing amount of runes
+    //the first one uses size one
+        //Screen. Half of screen is where half of rune should be. subtract half a rune from half a screen to find starting distance.
+        $(".rune").hide();
+        $("#rune1").show();
+        $("#rune1").offset({top: (windowH/2)-(currentRuneSize/2), left: (windowW/2)-(currentRuneSize/2)});
+    //second, third, and fourth uses size 2
+    if (runeNumber === 2) {
+        currentRuneSize = runeSize.sizeTwo;
+        $("#rune2").show();
+        //the runes will be aligned vertically. the runes should be half a rune apart. center.
+        //To do this, use vertical from rune#1 take half of screen width, then subtract half of total rune length (rune+rune+half rune)
+        //to get the second value, do the same but dont subtract, instead add half a half of a rune.
+        $("#rune1").offset({top: (windowH/2)-(currentRuneSize/2), left: (windowW/2)-(currentRuneSize*1.25)});
+        $("#rune2").offset({top: (windowH/2)-(currentRuneSize/2), left: (windowW/2)+(currentRuneSize/4)});
+    }
+    if (runeNumber === 3) {
+        currentRuneSize = runeSize.sizeTwo;
+        $("#rune2").show();
+        $("#rune3").show();
+        //the runes will still form a line, but now will three.
+        //use same spacing method, apply to three
+        $("#rune1").offset({top: (windowH/2)-(currentRuneSize/2), left: (windowW/2)-(currentRuneSize*2)});
+        $("#rune2").offset({top: (windowH/2)-(currentRuneSize/2), left: (windowW/2)-(currentRuneSize/2)});
+        $("#rune3").offset({top: (windowH/2)-(currentRuneSize/2), left: (windowW/2)+(currentRuneSize)});
+    }
+    if (runeNumber === 4) {
+        currentRuneSize = runeSize.sizeTwo;
+        //the runes will make a square, each half a rune apart.
+        //apply spacing method 2 to the oher axis
+        $("#rune2").show();
+        $("#rune3").show();
+        $("#rune4").show();
+        $("#rune1").offset({top: (windowH/2)-(currentRuneSize*1.25), left: (windowW/2)-(currentRuneSize*1.25)});
+        $("#rune2").offset({top: (windowH/2)-(currentRuneSize*1.25), left: (windowW/2)+(currentRuneSize/4)});
+        $("#rune3").offset({top: (windowH/2)+(currentRuneSize/4), left: (windowW/2)-(currentRuneSize*1.25)});
+        $("#rune4").offset({top: (windowH/2)+(currentRuneSize/4), left: (windowW/2)+(currentRuneSize/4)});
+    }
+    //quik fix?
+    if (runeNumber > 1){
+        if ($("#rune1").offset().top !== $("#rune2").offset().top){
+            $('#rune1').css('transition', 'none');
+            $("#rune1").offset({top: $("#rune2").offset().top});
+            if (runeNumber > 2){
+                $("#rune1").offset({left: $("#rune3").offset().left});
+            }
+            $('#rune1').css('transition', '.5s');
+            //wait, this actually works
+        }
+    }
+    //fifth, sixth, seventh, and eighth use the third size
+    $(".rune").css("width",currentRuneSize);
+    $(".rune").css("height",currentRuneSize);
 }
 function updateArea () {
     if (windowH<windowW) {
@@ -332,8 +485,8 @@ function updateArea () {
     var setMap1 = maps[currentMap[0]][currentMap[1]][0];
     var setMap2 = maps[currentMap[0]][currentMap[1]][1];
     setMapCollision = maps[currentMap[0]][currentMap[1]][2];
-    setMapInteration = maps[currentMap[0]][currentMap[1]][3];
-    // setMapEventReader = ;
+    setMapInteraction = maps[currentMap[0]][currentMap[1]][3];
+    setMapEventReader = maps[currentMap[0]][currentMap[1]][4];
     $("#area").empty();
     
     renderTiles(setMap1,"mapTile1");
@@ -352,7 +505,7 @@ function showChar(charNo, dir, walkframe){
     if (!$($(".char")[0]).attr("class").includes(String(charNo))){
         //if so, change all imgs to different source
         //get charcter's name
-        let charName = charcterSprites[charNo][0][0].match(/(?<=sprites\/b\/)(.*)(?=\/)/gi);
+        let charName = characterSprites[charNo][0][0].match(/(?<=sprites\/b\/)(.*)(?=\/)/gi);
         //replacing src
         $('.char').each(function(index, value){
             let div = $(value);
@@ -408,6 +561,26 @@ function makeEvent(area, room, x, y, foo){
     //maps[area][room][4-event reader]
     maps[area][room][4].push(this);
 }
+function runMapEvent(type, data) {
+    
+    if (type==="room") {
+        currentMap[1]+=data[0];
+        char.x=data[1];
+        char.y=data[2];
+        $("#world").addClass("fade");
+        setTimeout(function () {
+            $("#world").removeClass("fade");
+        }, 2000);
+        updateArea();
+    }
+    if (type==="mode") {
+        currentMode=1;
+        $("#combat").show();
+        $("#world").hide();
+    }
+    refresh();
+    
+}
 $(document).ready(function(){
     $('.preload').removeClass('preload');
     showChar(char.charNo, 0, walkframe % 4);
@@ -438,7 +611,7 @@ setInterval(function(){
     } else {
         if (currentMode===0) {
             //returning all colliding tiles
-            let checkColli = function (x, y) {
+            let checkColli = function (x, y,array) {
                 //if like 6.5, take both 6 and 7 tiles into
                 //consideration of collision
                 let collideTiles = [];
@@ -456,39 +629,43 @@ setInterval(function(){
                     y = [y];
                 }
                 //gather all possible tiles colliding with character
-                for (let i = 0; i < x.length; i ++) {
-                    for (let i2 = 0; i2 < y.length; i2 ++) {
-                            collideTiles.push(setMapCollision[y[i2]][x[i]]);
-                            collideCoor.push(x[i]+","+y[i2]);
+                if (array===0) {
+                    for (let i = 0; i < x.length; i ++) {
+                        for (let i2 = 0; i2 < y.length; i2 ++) {
+                                collideTiles.push(setMapCollision[y[i2]][x[i]]);
+                                collideCoor.push(x[i]+","+y[i2]);
+                        }
+                    }
+                } else if (array===1) {
+                    for (let i = 0; i < x.length; i ++) {
+                        for (let i2 = 0; i2 < y.length; i2 ++) {
+                                collideTiles.push(setMapInteraction[y[i2]][x[i]]);
+                                collideCoor.push(x[i]+","+y[i2]);
+                        }
                     }
                 }
-                console.log(collideTiles);
-                console.log(collideCoor);
                 return collideTiles;
             };
             let allowCollision = function (x,y) {
                 let checkColliArray = checkColli(x,y);
-                console.log(checkColliArray);
                 if (checkColliArray.length===0) {
                     return true;
                 }
             };
+            var checkColliTest;
             //check for inputs
             if (keys.w) {
                 char.y = fix(char.y - .2);
-                var checkColliTest = checkColli(char.x,char.y);
+                checkColliTest = checkColli(char.x,char.y,0);
                 if(checkColliTest.includes('x')) {
                     char.y = fix(char.y + .2);
-                }
-                for (var i=0;i>0;i++) {
-                    
                 }
                 showChar(char.charNo, 2, walkframe % 4);
                 walkpoint++;
             }
             if (keys.a) {
                 char.x = fix(char.x - .2);
-                var checkColliTest = checkColli(char.x,char.y);
+                checkColliTest = checkColli(char.x,char.y,0);
                 if(checkColliTest.includes('x')) {
                     char.x += .2;
                 }
@@ -497,7 +674,7 @@ setInterval(function(){
             }
             if (keys.s) {
                 char.y = fix(char.y + .2);
-                var checkColliTest = checkColli(char.x,char.y);
+                checkColliTest = checkColli(char.x,char.y,0);
                 if(checkColliTest.includes('x')) {
                     char.y -= .2;
                 }
@@ -506,66 +683,82 @@ setInterval(function(){
             }
             if (keys.d) {
                 char.x = fix(char.x + .2);
-                var checkColliTest = checkColli(char.x,char.y);
+                checkColliTest = checkColli(char.x,char.y,0);
                 if(checkColliTest.includes('x')) {
                     char.x -= .2;
                 }
                 showChar(char.charNo, 3, walkframe % 4);
                 walkpoint++;
             }
-            // let nearX;
-            // let nearY;
-            // let redefine = function(){
-            //     nearX = parseFloat(char.x) + char.boxCenter[0];
-            //     nearY = parseFloat(char.y) + char.boxCenter[1];
-            //     console.log("charx: "+char.x+" and chary: "+char.y);
-            //     console.log("x: "+nearX+" and y: "+nearY);
-            // };
-            // redefine();
-            // if (keys.s) {
-            //     //$(".char").attr("src",charcterSprites[char.charNo][0][walkframe%4]);
-            //     showChar(char.charNo, 0, walkframe % 4);
-            //     walkpoint++;
-            //     if (setMapCollision[Math.floor(nearY)+1][Math.floor(nearX)]!=="x") {
-            //         char.y=parseFloat((char.y+.2).toFixed(3));
-            //         redefine();
-            //     }
-            // }
-            // if (keys.a) {
-            //     //$(".char").attr("src",charcterSprites[char.charNo][1][walkframe%4]);
-            //     showChar(char.charNo, 1, walkframe % 4);
-            //     walkpoint++;
-            //     if (setMapCollision[Math.floor(nearY)][Math.floor(nearX - .2)]!=="x") {
-            //         char.x=parseFloat((char.x-.2).toFixed(3));
-            //         redefine();
-            //     }
-            // }
-            // if (keys.w) {
-            //     //$(".char").attr("src",charcterSprites[char.charNo][2][walkframe%4]);
-            //     showChar(char.charNo, 2, walkframe % 4);
-            //     walkpoint++;
-            //     if (setMapCollision[Math.floor(nearY - .2)][Math.floor(nearX)]!=="x") {
-            //         char.y=parseFloat((char.y-.2).toFixed(3));
-            //         redefine();
-            //     }
-            // }
-            // if (keys.d) {
-            //     //$(".char").attr("src",charcterSprites[char.charNo][3][walkframe%4]);
-            //     showChar(char.charNo, 3, walkframe % 4);
-            //     walkpoint++;
-            //     if (setMapCollision[Math.floor(nearY)][Math.floor(nearX)+1]!=="x") {
-            //         char.x=parseFloat((char.x+.2).toFixed(3));
-            //         redefine();
-            //     }
-            // }
+            var checkEventTest = checkColli(char.x,char.y,1);
+            for (var i=0;i<checkEventTest.length;i++) {
+                for (var j=0;j<setMapEventReader.length;j++) {
+                    if (checkEventTest[j] === setMapEventReader[j][0]) {
+                        runMapEvent(setMapEventReader[j][1],setMapEventReader[j][2]);
+                    }
+                }
+            }
         } else if (currentMode===1) {
-            if (keys.f) {
-                rotation--;
+            if (runeRotateCooldown.a > 0) {
+                runeRotateCooldown.a--;
+            } else {
+                if (keys.f) {
+                    runeRotation.a--;
+                    runeRotateCooldown.a=runeRotateCooldown.a+5;
+                }
+                if (keys.j) {
+                    runeRotation.a++;
+                    runeRotateCooldown.a=runeRotateCooldown.a+5;
+                }
             }
-            if (keys.j) {
-                rotation++;
+            if (runeRotateCooldown.b > 0) {
+                runeRotateCooldown.b--;
+            } else {
+                if (keys.g) {
+                    runeRotation.b--;
+                    runeRotateCooldown.b=runeRotateCooldown.b+5;
+                }
+                if (keys.h) {
+                    runeRotation.b++;
+                    runeRotateCooldown.b=runeRotateCooldown.b+5;
+                }
             }
+            if (runeRotateCooldown.c > 0) {
+                runeRotateCooldown.c--;
+            } else {
+                if (keys.d) {
+                    runeRotation.c--;
+                    runeRotateCooldown.c=runeRotateCooldown.c+5;
+                }
+                if (keys.k) {
+                    runeRotation.c++;
+                    runeRotateCooldown.c=runeRotateCooldown.c+5;
+                }
+            }
+            if (runeRotateCooldown.d > 0) {
+                runeRotateCooldown.d--;
+            } else {
+                if (keys.s) {
+                    runeRotation.d--;
+                    runeRotateCooldown.d=runeRotateCooldown.d+5;
+                }
+                if (keys.l) {
+                    runeRotation.d++;
+                    runeRotateCooldown.d=runeRotateCooldown.d+5;
+                }
+            }
+            var runeDeg = {
+                a:(runeRotation.a*90).toString(),
+                b:(runeRotation.b*90).toString(),
+                c:(runeRotation.c*90).toString(),
+                d:(runeRotation.d*90).toString()
+            };
+            $("#rune1").css("transform","rotate("+runeDeg.a+"deg)");
+            $("#rune2").css("transform","rotate("+runeDeg.b+"deg)");
+            $("#rune3").css("transform","rotate("+runeDeg.c+"deg)");
+            $("#rune4").css("transform","rotate("+runeDeg.d+"deg)");
         }
+        //debug
         if (keys.m) {
             currentMode++;
             if (currentMode>1) {
@@ -577,13 +770,19 @@ setInterval(function(){
                 $("#combat").show();
                 $("#world").hide();
             }
+            refresh();
+        }
+        if (keys.n) {
+            runeNumber++;
+            if (runeNumber>4) {
+                runeNumber=1;
+            }
+            refresh();
         }
     }
     if (walkpoint>=3) {
         walkpoint=walkpoint-3;
         walkframe++;
     }
-    var deg = ((rotation+1)*90).toString();
-    $("#rune").css("transform","rotate("+deg+"deg)");
     testIfWindowChangeThanksPlease();
 },100);

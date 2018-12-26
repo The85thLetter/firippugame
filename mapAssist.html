@@ -1,13 +1,77 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--    <head>-->
+<!--        <title>map making 101</title>-->
+<!--    </head>-->
+<!--    <body>-->
+<!--        <div id="disScreen">-->
+<!--            <div></div>-->
+<!--            <div id="area"></div>-->
+<!--        </div>-->
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<!--        <link rel="stylesheet" type="text/css" href="./mapAssist.css"/>-->
+<!--        <script type="text/javascript" src="./mapAssist.js"></script>-->
+<!--    </body>-->
+<!--</html>-->
 <!DOCTYPE html>
 <html>
     <head>
-        <title>map making 101</title>
+        <title>Firippu Map Assist</title>
     </head>
     <body>
-        <button>a</button>
-        <div id="disScreen">
-            <div id="area"></div>
+        <div>
+            <div id="controls"> 
+                <div>
+                    Current Brush: <span id="tellBrush">.</span>
+                    <br>
+                    <select id="chooseBrushes">
+                        <option>undefined</option>
+                        <option>mapTileWall</option>
+                        <option>mapTileWallBack</option>
+                        <option>mapTileSkyDay</option>
+                        <option>mapTileSkyNight</option>
+                        <option>mapTileWindow</option>
+                        <option>mapTileWoodFloor1</option>
+                        <option>mapTileWoodFloor2</option>
+                        <option>mapTileWoodFloor3</option>
+                        <option>mapTileWoodFloor4</option>
+                        <option>mapTileFloorGrass1</option>
+                        <option>mapTileFloorGrass2</option>
+                        <option>mapTileFloorGrass3</option>
+                        <option>mapTileFloorGrass4</option>
+                        <option>mapTileFloorGrass5</option>
+                        <option>mapTileFloorGrass6</option>
+                        <option>mapTileFloorGrass7</option>
+                        <option>mapTilePathGrass1</option>
+                        <option>mapTilePathGrass2</option>
+                        <option>mapTilePathGrass3</option>
+                        <option>mapTilePathGrass4</option>
+                        <option>mapTilePathGrass5</option>
+                        <option>mapTilePathGrass6</option>
+                        <option>mapTilePathGrass7</option>
+                        <option>mapTilePathGrass8</option>
+                        <option>mapTilePathGrass9</option>
+                        <option>mapTilePathGrass10</option>
+                        <option>mapTilePathGrass11</option>
+                        <option>mapTilePathGrass12</option>
+                        <option>mapTilePathGrass13</option>
+                        <option>mapTilePathGrass14</option>
+                        <option>mapTilePathGrass15</option>
+                    </select>
+                    <div id="icon"><div class="mapCell"></div></div>
+                    <br>
+                </div>
+                <div>
+                    <input id="customBrush"><button id="addCustom">Add Custom Brush</button>
+                </div>
+            </div>
+            <div>
+                <button id="import">Import map</button>
+                <button id="export">Export map</button>
+                <textarea id="mapString" placeholder="mapString"></textarea>
+            </div>
         </div>
+        <div id="display"></div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="./mapAssist.css"/>
         <script type="text/javascript" src="./mapAssist.js"></script>

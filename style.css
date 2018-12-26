@@ -12,9 +12,11 @@
     overflow: hidden;
     position:absolute;
 }
-
-#rune {
-    transition: .5s ease-in-out;
+#world {
+    animation-duration: 2s;
+}
+.rune {
+    transition: .5s;
     position:absolute;
     z-index:2;
 }
@@ -44,20 +46,103 @@
     z-index:2;
 }
 .mapTileWall {
-    background: url("https://i.imgur.com/A0HZXBr.png");
-}
-.mapTileFloor {
-    background: url("./firippu textures/tiles/s/f.png");
-}
-.mapTileWall {
-    background: url("./firippu textures/tiles/s/wall.png");
+    background: url("/firippu textures/tiles/b/wall.png");
 }
 .mapTileWallBack {
-    background: url("./firippu textures/tiles/s/backwall.png");
+    background: url("/firippu textures/tiles/b/wallBack.png");
+}
+.mapTileSkyDay {
+    background: url("/firippu textures/tiles/b/skyDay.png");
+}
+.mapTileSkyNight {
+    background: url("/firippu textures/tiles/b/skyNight.png");
 }
 .mapTileWindow {
-    background: url("./firippu textures/tiles/s/window.png");
+    background: url("/firippu textures/tiles/b/window.png");
 }
-.mapTileSky {
-    background: url("./firippu textures/tiles/s/sky.png");
+.mapTileWoodFloor1 {
+    background: url("/firippu textures/tiles/b/woodFloor1.png");
+}
+.mapTileWoodFloor2 {
+    background: url("/firippu textures/tiles/b/woodFloor2.png");
+}
+.mapTileWoodFloor3 {
+    background: url("/firippu textures/tiles/b/woodFloor3.png");
+}
+.mapTileWoodFloor4 {
+    background: url("/firippu textures/tiles/b/woodFloor4.png");
+}
+.mapTileFloorGrass1 {
+    background: url("/firippu textures/tiles/b/floorGrass1.png");   
+}
+.mapTileFloorGrass2 {
+    background: url("/firippu textures/tiles/b/floorGrass2.png");   
+}
+.mapTileFloorGrass3 {
+    background: url("/firippu textures/tiles/b/floorGrass3.png");   
+}
+.mapTileFloorGrass4 {
+    background: url("/firippu textures/tiles/b/floorGrass4.png");   
+}
+.mapTileFloorGrass5 {
+    background: url("/firippu textures/tiles/b/floorGrass5.png");   
+}
+.mapTileFloorGrass6 {
+    background: url("/firippu textures/tiles/b/floorGrass6.png");   
+}
+.mapTileFloorGrass7 {
+    background: url("/firippu textures/tiles/b/floorGrass7.png");   
+}
+.mapTilePathGrass1 {
+    background: url("/firippu textures/tiles/b/pathGrass1.png");
+}
+.mapTilePathGrass2 {
+    background: url("/firippu textures/tiles/b/pathGrass2.png");
+}
+.mapTilePathGrass3 {
+    background: url("/firippu textures/tiles/b/pathGrass3.png");
+}
+.mapTilePathGrass4 {
+    background: url("/firippu textures/tiles/b/pathGrass4.png");
+}
+.mapTilePathGrass5 {
+    background: url("/firippu textures/tiles/b/pathGrass5.png");
+}
+.mapTilePathGrass6 {
+    background: url("/firippu textures/tiles/b/pathGrass6.png");
+}
+.mapTilePathGrass7 {
+    background: url("/firippu textures/tiles/b/pathGrass7.png");
+}
+.mapTilePathGrass8 {
+    background: url("/firippu textures/tiles/b/pathGrass8.png");
+}
+.mapTilePathGrass9 {
+    background: url("/firippu textures/tiles/b/pathGrass9.png");
+}
+.mapTilePathGrass10 {
+    background: url("/firippu textures/tiles/b/pathGrass10.png");
+}
+.mapTilePathGrass11 {
+    background: url("/firippu textures/tiles/b/pathGrass11.png");
+}
+.mapTilePathGrass12 {
+    background: url("/firippu textures/tiles/b/pathGrass12.png");
+}
+.mapTilePathGrass13 {
+    background: url("/firippu textures/tiles/b/pathGrass13.png");
+}
+.mapTilePathGrass14 {
+    background: url("/firippu textures/tiles/b/pathGrass14.png");
+}
+.mapTilePathGrass15 {
+    background: url("/firippu textures/tiles/b/pathGrass15.png");
+}
+.fade {
+    animation-duration: 2s;
+    animation-name: fade;
+}
+@keyframes fade {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
