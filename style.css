@@ -46,97 +46,97 @@
     z-index:2;
 }
 .mapTileWall {
-    background: url("/firippu textures/tiles/b/wall.png");
+    background: url("./firippu textures/tiles/b/wall.png");
 }
 .mapTileWallBack {
-    background: url("/firippu textures/tiles/b/wallBack.png");
+    background: url("./firippu textures/tiles/b/wallBack.png");
 }
 .mapTileSkyDay {
-    background: url("/firippu textures/tiles/b/skyDay.png");
+    background: url("./firippu textures/tiles/b/skyDay.png");
 }
 .mapTileSkyNight {
-    background: url("/firippu textures/tiles/b/skyNight.png");
+    background: url("./firippu textures/tiles/b/skyNight.png");
 }
 .mapTileWindow {
-    background: url("/firippu textures/tiles/b/window.png");
+    background: url("./firippu textures/tiles/b/window.png");
 }
 .mapTileWoodFloor1 {
-    background: url("/firippu textures/tiles/b/woodFloor1.png");
+    background: url("./firippu textures/tiles/b/woodFloor1.png");
 }
 .mapTileWoodFloor2 {
-    background: url("/firippu textures/tiles/b/woodFloor2.png");
+    background: url("./firippu textures/tiles/b/woodFloor2.png");
 }
 .mapTileWoodFloor3 {
-    background: url("/firippu textures/tiles/b/woodFloor3.png");
+    background: url("./firippu textures/tiles/b/woodFloor3.png");
 }
 .mapTileWoodFloor4 {
-    background: url("/firippu textures/tiles/b/woodFloor4.png");
+    background: url("./firippu textures/tiles/b/woodFloor4.png");
 }
 .mapTileFloorGrass1 {
-    background: url("/firippu textures/tiles/b/floorGrass1.png");   
+    background: url("./firippu textures/tiles/b/floorGrass1.png");   
 }
 .mapTileFloorGrass2 {
-    background: url("/firippu textures/tiles/b/floorGrass2.png");   
+    background: url("./firippu textures/tiles/b/floorGrass2.png");   
 }
 .mapTileFloorGrass3 {
-    background: url("/firippu textures/tiles/b/floorGrass3.png");   
+    background: url("./firippu textures/tiles/b/floorGrass3.png");   
 }
 .mapTileFloorGrass4 {
-    background: url("/firippu textures/tiles/b/floorGrass4.png");   
+    background: url("./firippu textures/tiles/b/floorGrass4.png");   
 }
 .mapTileFloorGrass5 {
-    background: url("/firippu textures/tiles/b/floorGrass5.png");   
+    background: url("./firippu textures/tiles/b/floorGrass5.png");   
 }
 .mapTileFloorGrass6 {
-    background: url("/firippu textures/tiles/b/floorGrass6.png");   
+    background: url("./firippu textures/tiles/b/floorGrass6.png");   
 }
 .mapTileFloorGrass7 {
-    background: url("/firippu textures/tiles/b/floorGrass7.png");   
+    background: url("./firippu textures/tiles/b/floorGrass7.png");   
 }
 .mapTilePathGrass1 {
-    background: url("/firippu textures/tiles/b/pathGrass1.png");
+    background: url("./firippu textures/tiles/b/pathGrass1.png");
 }
 .mapTilePathGrass2 {
-    background: url("/firippu textures/tiles/b/pathGrass2.png");
+    background: url("./firippu textures/tiles/b/pathGrass2.png");
 }
 .mapTilePathGrass3 {
-    background: url("/firippu textures/tiles/b/pathGrass3.png");
+    background: url("./firippu textures/tiles/b/pathGrass3.png");
 }
 .mapTilePathGrass4 {
-    background: url("/firippu textures/tiles/b/pathGrass4.png");
+    background: url("./firippu textures/tiles/b/pathGrass4.png");
 }
 .mapTilePathGrass5 {
-    background: url("/firippu textures/tiles/b/pathGrass5.png");
+    background: url("./firippu textures/tiles/b/pathGrass5.png");
 }
 .mapTilePathGrass6 {
-    background: url("/firippu textures/tiles/b/pathGrass6.png");
+    background: url("./firippu textures/tiles/b/pathGrass6.png");
 }
 .mapTilePathGrass7 {
-    background: url("/firippu textures/tiles/b/pathGrass7.png");
+    background: url("./firippu textures/tiles/b/pathGrass7.png");
 }
 .mapTilePathGrass8 {
-    background: url("/firippu textures/tiles/b/pathGrass8.png");
+    background: url("./firippu textures/tiles/b/pathGrass8.png");
 }
 .mapTilePathGrass9 {
-    background: url("/firippu textures/tiles/b/pathGrass9.png");
+    background: url("./firippu textures/tiles/b/pathGrass9.png");
 }
 .mapTilePathGrass10 {
-    background: url("/firippu textures/tiles/b/pathGrass10.png");
+    background: url("./firippu textures/tiles/b/pathGrass10.png");
 }
 .mapTilePathGrass11 {
-    background: url("/firippu textures/tiles/b/pathGrass11.png");
+    background: url("./firippu textures/tiles/b/pathGrass11.png");
 }
 .mapTilePathGrass12 {
-    background: url("/firippu textures/tiles/b/pathGrass12.png");
+    background: url("./firippu textures/tiles/b/pathGrass12.png");
 }
 .mapTilePathGrass13 {
-    background: url("/firippu textures/tiles/b/pathGrass13.png");
+    background: url("./firippu textures/tiles/b/pathGrass13.png");
 }
 .mapTilePathGrass14 {
-    background: url("/firippu textures/tiles/b/pathGrass14.png");
+    background: url("./firippu textures/tiles/b/pathGrass14.png");
 }
 .mapTilePathGrass15 {
-    background: url("/firippu textures/tiles/b/pathGrass15.png");
+    background: url("./firippu textures/tiles/b/pathGrass15.png");
 }
 .fade {
     animation-duration: 2s;
